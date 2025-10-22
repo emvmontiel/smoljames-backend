@@ -1,16 +1,17 @@
-const express = require('express') // this basically imports the express package into our codebase; requires express package so that we can use it all throughout our project
-const app = express() // defines or creates the backend application for us
-const PORT = 3001 // defines the port number where our server will be listening for incoming requests
+const express = require('express'); // imports the express package
+const app = express(); // creates an express app instance
+const PORT = 3001; // port for the server to listen on
 
 app.get('/', (req, res) => {
-    console.log('I hit an endpoint!')
-    // req.sendStatus(200) // sends a status code of 200 (OK) back to the client
+    console.log('I hit an endpoint!', req.method); // logs to console when the endpoint is hit
+    res.sendStatus(201); // sends an HTTP status code of 200 back to the client
 });
 
-// By default, the app.listen() method listens on port 3000
-// You can specify a different port by passing a number as an argument, e.g., app.listen(4000); 
+app.get('/dashboard', (req, res) => {
+    console.log('I hit another endpoint!'); // logs to console when the endpoint is hit
+    res.send(`Good day, what's your name?`); // sends an HTTP status code of 200 back to the client
+});
 
-console.log('This is a new line')
-console.log('This is another line')
+// Start listening on the specified port
+app.listen(PORT, () => console.log(`Server has started on: http://localhost:${PORT}`));
 
-app.listen(PORT, () => console.log(`Server has started on: ${PORT}`)) // tells our application to start listening for incoming requests from clients (like web browsers)
