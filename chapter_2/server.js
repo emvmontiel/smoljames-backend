@@ -15,3 +15,6 @@ app.get('/dashboard', (req, res) => {
 // Start listening on the specified port
 app.listen(PORT, () => console.log(`Server has started on: http://localhost:${PORT}`));
 
+console.log('Hello, Backend Full Course!');
+console.log('Heyyy');
+
