@@ -2,6 +2,10 @@ const express = require('express'); // imports the express package
 const app = express(); // creates an express app instance; creates the backend application for us
 const PORT = 3001; // port for the server to listen on
 
+let data = {
+    name: 'estelle'
+};
+
 app.get('/', (req, res) => {
     console.log('I hit an endpoint!', req.method); // logs to console when the endpoint is hit
     res.status(201).send(`<a href='/dashboard'>Dashboard</a>
@@ -22,6 +26,11 @@ app.get('/settings', (req, res) => {
         <a href='/'>Home</a>
         <a href='/dashboard'>Dashboard</a>`
     );
+});
+
+app.get('/api/data', (req, res) => {
+    console.log('This endpoint is for data.')
+    res.send(data)
 });
 
 // Start listening on the specified port
