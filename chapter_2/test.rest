@@ -6,3 +6,11 @@ GET http://localhost:3001/dashboard
 
 ### data endpoint
 GET http://localhost:3001/api/data/
+
+### data endpoint for adding a user
+POST http://localhost:3001/api/data/
+Content-Type: application/json
+
+{
+    "name": "shiela marie"
+}

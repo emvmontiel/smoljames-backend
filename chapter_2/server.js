@@ -2,15 +2,23 @@ const express = require('express'); // imports the express package
 const app = express(); // creates an express app instance; creates the backend application for us
 const PORT = 3001; // port for the server to listen on
 
-let data = {
-    name: 'estelle'
-};
+let data = ['estelle'];
+
+// Middleware
+app.use(express.json()); // configures our server to expect json data as an incoming request
 
 app.get('/', (req, res) => {
     console.log('I hit an endpoint!', req.method); // logs to console when the endpoint is hit
     res.status(201).send(`<a href='/dashboard'>Dashboard</a>
         <a href='/settings'>Settings</a>`); // sends an HTTP status code of 201 back to the client
 });
+
+app.post('/api/data', (req, res) => {
+    const newData = req.body;
+    res.sendStatus(201);
+    console.log(newData)
+    data.push(newData.name)
+})
 
 app.get('/dashboard', (req, res) => {
     console.log('I hit another endpoint!'); // logs to console when the endpoint is hit
@@ -33,5 +41,5 @@ app.get('/api/data', (req, res) => {
     res.send(data)
 });
 
-// Start listening on the specified port
+// Start listening on the specified port 
 app.listen(PORT, () => console.log(`Server has started on: http://localhost:${PORT}`));
