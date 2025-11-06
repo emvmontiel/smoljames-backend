@@ -9,8 +9,15 @@ app.use(express.json()); // configures our server to expect json data as an inco
 
 app.get('/', (req, res) => {
     console.log('I hit an endpoint!', req.method); // logs to console when the endpoint is hit
-    res.status(201).send(`<a href='/dashboard'>Dashboard</a>
-        <a href='/settings'>Settings</a>`); // sends an HTTP status code of 201 back to the client
+    res.status(201); // sends an HTTP status code of 201 back to the client
+    res.send(`
+        <body style="background:green; color:white;">
+            <h1>DATA:</h1>
+            <p>${JSON.stringify(data)}</p>
+            <a href='/dashboard'>Dashboard</a>
+            <a href='/settings'>Settings</a> 
+        </body>
+        `)
 });
 
 app.post('/api/data', (req, res) => {
