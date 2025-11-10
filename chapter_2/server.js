@@ -45,7 +45,10 @@ app.get('/settings', (req, res) => {
 
 app.get('/api/data', (req, res) => {
     console.log('This endpoint is for data.')
-    res.send(data)
+    res.send(
+        `<body>
+        <p>${JSON.stringify(data)}</p>
+    </body>`)
 });
 
 app.delete('/api/data', (req, res) => {
