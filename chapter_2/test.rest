@@ -12,7 +12,7 @@ POST http://localhost:3001/api/data/
 Content-Type: application/json
 
 {
-    "name": "what"
+    "name": "mumbai"
 }
 
 ### Deleting a user
