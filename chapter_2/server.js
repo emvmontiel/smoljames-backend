@@ -48,5 +48,13 @@ app.get('/api/data', (req, res) => {
     res.send(data)
 });
 
+app.delete('/api/data', (req, res) => {
+    // data.pop();
+    const x = data.pop();
+    console.log("Popped " + x);
+    console.log(data);
+    res.sendStatus(201);
+})
+
 // Start listening on the specified port 
 app.listen(PORT, () => console.log(`Server has started on: http://localhost:${PORT}`));

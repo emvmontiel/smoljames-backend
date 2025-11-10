@@ -13,4 +13,7 @@ Content-Type: application/json
 
 {
     "name": "shiela marie"
-}
+}### Deleting a user
+
+### Deleting a user
+DELETE http://localhost:3001/api/data/
