@@ -5,14 +5,54 @@ import bcrypt from 'bcryptjs' // This is for encrypting the passwords; for the a
 import jwt from 'jsonwebtoken' // Allow us to create a JSON token – an alphanumeric key; a secure password that we can associate with the user's authentication without needing to sign up again
 import db from '../db.js'
 
-// How to configure endpoints/routes when you're not defining them in the current file
+// How to configure endpoints/routes when you're not defining them in the current file (server.js)
+// The router is like a subsection of our app that we can use to create our methods
 const router = express.Router()
 
 // Now, we are using the router instead of app (located in server.js) to create our endpoints
 // This allows us to separate the files and uphold organization
-router.post('/register', (req, res) => {})
+// Register a new user at /auth/register endpoint
+router.post('/register', (req, res) => {
+    const { username, password } = req.body // Gives us access to the JSON body of the incoming network request
+    // console.log(username, password)
+    // res.sendStatus(201)
+
+    const hashedPassword = bcrypt.hashSync(password, 8);
+    console.log(hashedPassword);
+    // res.sendStatus(201);
+
+    // Saves the new user and hashed password to db
+    // The prepare method allows us to inject values into SQL queries
+    try {
+        const insertUser = db.prepare(` 
+            INSERT INTO users(username, password)
+            VALUES (?, ?)`) // Creates the query only; VALUES are left blank
+        const result = insertUser.run(username, hashedPassword) // Executes the query; VALUES used are indicated here
+        
+        // Creates an automatic/default/first to do for the user
+        const defaultTodo = `Hi! Add your first task here ;)`
+        
+        // Prepares the SQL query
+        const insertTodo = db.prepare(`
+            INSERT INTO todos (user_id, task)
+            VALUES (?, ?)`)
+
+        // Runs the SQL query
+        // Checks the id of the last row/entry added to the table or the most recently added row/entry
+        insertTodo.run(result.lastInsertRowid, defaultTodo)
+
+        // Creates a token
+        const token = jwt.sign({ id: result.lastInsertRowid }, process.env.JWT_SECRET, { expiresIn: '24h' })
+        res.json({ token })
+    } catch (err) {
+        console.log(err.message)
+        res.sendStatus(503)
+    }
+})
 
 // Contains the logic to login the user when we hit the endpoint 
-router.post('/login', (req, res) => {})
+router.post('/login', (req, res) => {
+
+})
 
 export default router
