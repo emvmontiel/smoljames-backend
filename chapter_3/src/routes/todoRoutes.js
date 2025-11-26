@@ -15,10 +15,23 @@ router.get('/', (req, res) => {
 });
 
 // Create
-router.post('/', (req, res) => {});
+router.post('/', (req, res) => {
+    const { task } = req.body
+    const insertTodo = db.prepare(`
+        INSERT INTO todos (user_id, task)
+        VALUES (?, ?)
+        `)
+    const result = insertTodo.run(req.userId, task)
+    res.json({ id: result.lastInsertRowid, task , completed: 0 })
+});
 
 // Update
-router.put('/:id', (req, res) => {});
+// Nov 26 2025 16:57
+// https://youtu.be/9BD9eK9VqXA?t=14490
+router.put('/:id', (req, res) => {
+    const { completed } = req.body
+    const { id } = req.params
+});
 
 // Delete
 router.delete('/:id', (req, res) => {});
