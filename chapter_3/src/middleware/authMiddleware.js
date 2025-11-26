@@ -14,7 +14,7 @@ function authMiddleware (req, res, next) {
             })
         }
         req.userId = decoded.id
-        next()
+        next() // Allows the program to proceed to the endpoint; middleware function has concluded
  })
 }
 
