@@ -18,3 +18,24 @@ Content-Type: application/json
     "username": "hot@gmail.com",
     "password": "123123123"
 }
+
+### Fetch todos GET /todos (protected)
+GET http://localhost:5000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzY0MTQ3MzIxLCJleHAiOjE3NjQyMzM3MjF9.wh9JAnD8RER27FARWQ3swFNmjevDTal0JI12k9KDOuU
+
+### Create a new todo POST /todos (protected)
+POST http://localhost:5000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzY0MTQ3MzIxLCJleHAiOjE3NjQyMzM3MjF9.wh9JAnD8RER27FARWQ3swFNmjevDTal0JI12k9KDOuU
+Content-Type: application/json
+
+{
+    "task": "Finished Smoljames' course"
+}
+
+### Update a todo PUT /todos/:id (protected)
+PUT http://localhost:5000/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzY0MTQ3MzIxLCJleHAiOjE3NjQyMzM3MjF9.wh9JAnD8RER27FARWQ3swFNmjevDTal0JI12k9KDOuU
+Content-Type: application/json
+{
+    "completed": 1
+}
