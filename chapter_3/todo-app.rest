@@ -21,20 +21,20 @@ Content-Type: application/json
 
 ### Fetch todos GET /todos (protected)
 GET http://localhost:5000/todos
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzY0MjMwOTMxLCJleHAiOjE3NjQzMTczMzF9.EOM7bL1Ri-GfQT58tec_3bsP884ky42PnsGIzD9D22M
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzY0MjM1Nzk1LCJleHAiOjE3NjQzMjIxOTV9.3uVyjXuSkBisyRWmIKMIERDTRYsgd_GlKLVAkX0o4Qs
 
 ### Create a new todo POST /todos (protected)
 POST http://localhost:5000/todos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzY0MjMwOTMxLCJleHAiOjE3NjQzMTczMzF9.EOM7bL1Ri-GfQT58tec_3bsP884ky42PnsGIzD9D22M
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzY0MjM1Nzk1LCJleHAiOjE3NjQzMjIxOTV9.3uVyjXuSkBisyRWmIKMIERDTRYsgd_GlKLVAkX0o4Qs
 Content-Type: application/json
 
 {
-    "task": "buy groceries"
+    "task": "hi"
 }
 
 ### Update a todo PUT /todos/:id (protected)
-PUT http://localhost:5000/todos/1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzY0MjMwOTMxLCJleHAiOjE3NjQzMTczMzF9.EOM7bL1Ri-GfQT58tec_3bsP884ky42PnsGIzD9D22M
+PUT http://localhost:5000/todos/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzY0MjM1Nzk1LCJleHAiOjE3NjQzMjIxOTV9.3uVyjXuSkBisyRWmIKMIERDTRYsgd_GlKLVAkX0o4Qs
 Content-Type: application/json
 
 {
@@ -42,5 +42,5 @@ Content-Type: application/json
 }
 
 ### Delete a todo DELETE /todos/:id (protected)
-DELETE http://localhost:5000/todos/1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzY0MjMwOTMxLCJleHAiOjE3NjQzMTczMzF9.EOM7bL1Ri-GfQT58tec_3bsP884ky42PnsGIzD9D22M
+DELETE http://localhost:5000/todos/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzY0MjM1Nzk1LCJleHAiOjE3NjQzMjIxOTV9.3uVyjXuSkBisyRWmIKMIERDTRYsgd_GlKLVAkX0o4Qs
