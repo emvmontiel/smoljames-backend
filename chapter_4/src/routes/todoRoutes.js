@@ -21,9 +21,10 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const { task } = req.body
     const todo = await prisma.todo.create({
-        data:
-        task, 
-        userId: req.userId
+        data: {
+            task, 
+            userId: req.userId
+        }
     })
     res.json(todo)
 });
