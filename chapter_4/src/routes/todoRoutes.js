@@ -1,7 +1,6 @@
 // Hellooooooo, it is now the 19th of Novembaaaaaaa
 // Update: Dec 3 2025 13:46
-import express from 'express'
-import db from '../db.js'
+import express from 'express' 
 import prisma from '../@prisma/client'
 
 const router = express.Router()
